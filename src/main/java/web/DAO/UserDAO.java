@@ -14,13 +14,11 @@ public class UserDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Transactional
     public List<User> getAllUsers() {
         return entityManager.createQuery("select u from User u", User.class)
                 .getResultList();
     }
 
-    @Transactional
     public User getUserById(int id) {
         TypedQuery<User> query = entityManager.createQuery(
                 "select u from User u where u.id = :id", User.class);
